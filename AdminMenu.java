@@ -16,6 +16,12 @@ public class AdminMenu extends Menu{
 	public int inputSwitch() {
 		while(true) {
 			switch(getMenuSelection()) {
+				case 0:
+					displayTable("rooms");
+					break;
+				case 1:
+					displayTable("reservations");
+					break;
 				case 5:
 					return MC.SUBSYSTEM;
 				default:
