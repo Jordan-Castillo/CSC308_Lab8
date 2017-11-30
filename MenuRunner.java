@@ -12,7 +12,7 @@ public class MenuRunner {
 		
 		Menu current = new SubsystemMenu(conn);
 		int mConst = MC.SUBSYSTEM;
-		
+		/*
 		while(mConst != MC.QUIT) {
 			current.displayMenu();
 			mConst = current.inputSwitch();
@@ -31,6 +31,7 @@ public class MenuRunner {
 					System.out.println("MENU NOT RECOGNIZED");//placeholder
 			}
 		}//end of While loop
+		*/
 		closeConnection(conn); //close the DB connection
 		
 	}//close main
