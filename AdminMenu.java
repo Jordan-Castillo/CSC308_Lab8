@@ -22,5 +22,42 @@ public class AdminMenu extends Menu{
 			}
 		}
 	}
+	
+	public void displayStatus(){
+		boolean rms = false, rvs = false;
+		int rmsCount = 0, rvsCount = 0;
+		String status = "no database";
+		Statement stmt;
+		try{
+			DatabaseMetaData meta = conn.getMetaData();
+			ResultSet res = meta.getTables(null, null, "rooms", null);
+			if(res.next())//determine if rooms table exists
+			{	rms = true;
+				stmt = conn.createStatement();
+				res = stmt.executeQuery("Select COUNT(*) FROM rooms;");
+				if(res.next())
+					rmsCount = res.getInt(1);
+			}
+			res = meta.getTables(null, null, "reservations", null);
+			if(res.next())//determine if reservations table exists
+			{	rvs =  true;
+				status = "empty";
+				stmt = conn.createStatement();
+				res = stmt.executeQuery("Select COUNT(*) FROM reservations;");
+				if(res.next())
+					rvsCount = res.getInt(1);
+			}
+			if(rmsCount > 0 AND rvsCount > 0)
+				status = "full";
+			stmt.close();
+			res.close();
+			System.out.print("Database Status: " + status + "\n" +
+							"Reservations: " + rvsCount + "\n" + "Rooms: " + rmsCount);
+		}//END TRY BLOCK
+		catch(Exception ex){
+			System.out.println("Failure during dbStatus() call.");
+			return "Error during dbStatus()";
+		}
+	}
 
 }
