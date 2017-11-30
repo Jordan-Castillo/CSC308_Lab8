@@ -35,35 +35,6 @@ public class MenuRunner {
 		
 	}//close main
 	
-	
-	public static String dbStatus(Connection conn){
-		int caseNum = 0;  //caseNum determines return string
-		try{
-			DatabaseMetaData meta = conn.getMetaData();
-			ResultSet res = meta.getTables(null, null, "rooms", null);
-			if(res.next())//determine if rooms table exists
-				caseNum += 1;
-			res = meta.getTables(null, null, "reservations", null);
-			if(res.next())//determine if reservations table exists
-				caseNum += 1;
-			if(caseNum == 2)//determine if any tuples are present
-			{
-				
-			}
-			res.close();
-		switch(caseNum){
-			case 0: return "no database";
-			case 2: return "empty";
-			case 3: return "full";
-			default: return "Error";
-		}
-		}//END TRY BLOCK
-		catch(Exception ex){
-			System.out.println("Failure during dbStatus() call.");
-			return "Error during dbStatus()";
-		}
-	}
-
 
 /*
  *	Determine if the tables exist, 

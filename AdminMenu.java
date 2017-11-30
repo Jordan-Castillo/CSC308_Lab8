@@ -10,6 +10,7 @@ public class AdminMenu extends Menu{
 	public void displayMenu() {
 		//current status display
 		printOptions();
+		displayStatus();
 	}
 	
 	public int inputSwitch() {
