@@ -56,7 +56,7 @@ public class AdminMenu extends Menu{
 		}//END TRY BLOCK
 		catch(Exception ex){
 			System.out.println("Failure during dbStatus() call.");
-			return "Error during dbStatus()";
+			System.exit(-1);
 		}
 	}
 
