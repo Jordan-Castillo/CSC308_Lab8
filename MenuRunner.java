@@ -6,9 +6,7 @@ public class MenuRunner {
 
 	public static void main(String[] args) {
 		Connection conn = null;
-		if((conn = makeConnection()) != null)	
-			System.out.println("Connection made!");
-		else
+		if((conn = makeConnection()) == null)	
 			System.out.println("Failure to connect.");
 		checkTables(conn);
 		
