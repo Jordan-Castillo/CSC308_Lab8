@@ -30,7 +30,7 @@ public class AdminMenu extends Menu{
 		ResultSet res = stmt.executeQuery("SELECT * FROM " + tableName + ";");
 		while(res.next())
 		{
-			System.out.println(res.getString());
+			System.out.println(res.getString(1));
 		}
 	}
 	
