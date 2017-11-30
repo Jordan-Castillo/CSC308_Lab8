@@ -8,7 +8,7 @@ public class Menu {
 	
 	private ArrayList<String> options;
 	private static Scanner reader = new Scanner(System.in);
-	private Connection conn;
+	public Connection conn;
 	
 	public Menu(String[] opts, Connection conn) {
 		options = new ArrayList<String>(Arrays.asList(opts));
