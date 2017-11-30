@@ -26,11 +26,16 @@ public class AdminMenu extends Menu{
 	
 	public void displayTable(String tableName)
 	{
-		Statement stmt = conn.createStatement();
-		ResultSet res = stmt.executeQuery("SELECT * FROM " + tableName + ";");
-		while(res.next())
-		{
-			System.out.println(res.getString(1));
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet res = stmt.executeQuery("SELECT * FROM " + tableName + ";");
+			while(res.next())
+			{
+				System.out.println(res.getString(1));
+			}
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
 		}
 	}
 	
