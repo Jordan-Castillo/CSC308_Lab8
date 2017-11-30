@@ -1,8 +1,8 @@
 
 public class SubsystemMenu extends Menu{
 	
-	public SubsystemMenu() {
-		super(new String[] {"ADMIN", "GUEST", "OWNER", "QUIT"});
+	public SubsystemMenu(Connection conn) {
+		super(new String[] {"ADMIN", "GUEST", "OWNER", "QUIT"}, conn);
 	}
 	
 	public void displayMenu() {

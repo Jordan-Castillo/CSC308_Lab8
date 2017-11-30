@@ -12,7 +12,7 @@ public class MenuRunner {
 			System.out.println("Failure to connect.");
 		checkTables(conn);
 		
-		Menu current = new SubsystemMenu();
+		Menu current = new SubsystemMenu(conn);
 		int mConst = MC.SUBSYSTEM;
 		
 		while(mConst != MC.QUIT) {
@@ -24,10 +24,10 @@ public class MenuRunner {
 					System.out.println("Bye!");
 					System.exit(0);
 				case MC.SUBSYSTEM:
-					current = new SubsystemMenu();
+					current = new SubsystemMenu(conn);
 					break;
 				case MC.ADMIN:
-					current = new AdminMenu();
+					current = new AdminMenu(conn);
 					break;
 				default:
 					System.out.println("MENU NOT RECOGNIZED");//placeholder

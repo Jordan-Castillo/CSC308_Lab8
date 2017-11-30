@@ -1,9 +1,9 @@
 
 public class AdminMenu extends Menu{
 	
-	public AdminMenu(){
+	public AdminMenu(Connection conn){
 		super(new String[] {"View Rooms", "View Reservations", "Clear All Records",
-			"Load Database", "Remove Database", "Switch Subsystem"});
+			"Load Database", "Remove Database", "Switch Subsystem"}, conn);
 	}
 	
 	public void displayMenu() {
