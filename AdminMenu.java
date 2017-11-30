@@ -25,6 +25,7 @@ public class AdminMenu extends Menu{
 	}
 	
 	public void displayStatus(){
+		System.out.println("Fuck?");
 		boolean rms = false, rvs = false;
 		int rmsCount = 0, rvsCount = 0;
 		String status = "no database";
@@ -60,6 +61,7 @@ public class AdminMenu extends Menu{
 			System.out.println("Failure during dbStatus() call.");
 			System.exit(-1);
 		}
+		System.out.println("Fuck!");
 	}
 
 }
