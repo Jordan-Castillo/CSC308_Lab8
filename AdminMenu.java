@@ -24,6 +24,16 @@ public class AdminMenu extends Menu{
 		}
 	}
 	
+	public void displayTable(String tableName)
+	{
+		Statement stmt = conn.createStatement();
+		ResultSet res = stmt.executeQuery("SELECT * FROM " + tableName + ";");
+		while(res.next())
+		{
+			System.out.println(res.getString());
+		}
+	}
+	
 	public void displayStatus(){
 		boolean rms = false, rvs = false;
 		int rmsCount = 0, rvsCount = 0;
@@ -53,7 +63,7 @@ public class AdminMenu extends Menu{
 			if(rmsCount > 0 && rvsCount > 0)
 				status = "full";
 			res.close();
-			System.out.print("Database Status: " + status + "\n" +
+			System.out.println("Database Status: " + status + "\n" +
 							"Reservations: " + rvsCount + "\n" + "Rooms: " + rmsCount);
 		}//END TRY BLOCK
 		catch(Exception ex){
