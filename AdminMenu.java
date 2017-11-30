@@ -47,7 +47,7 @@ public class AdminMenu extends Menu{
 				if(res.next())
 					rvsCount = res.getInt(1);
 			}
-			if(rmsCount > 0 AND rvsCount > 0)
+			if(rmsCount > 0 && rvsCount > 0)
 				status = "full";
 			stmt.close();
 			res.close();
