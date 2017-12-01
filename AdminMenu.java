@@ -22,10 +22,12 @@ public class AdminMenu extends Menu{
 		while(true) {
 			switch(getMenuSelection()) {
 				case 0:
+					clearScreen();
 					displayTable("rooms");
 					displayMenuNoClear();
 					break;
 				case 1:
+					clearScreen();
 					displayTable("reservations");
 					displayMenuNoClear();
 					break;
