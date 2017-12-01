@@ -32,6 +32,7 @@ public class AdminMenu extends Menu{
 				case 2:
 					clearTables();
 					displayMenuNoClear();
+					break;
 				case 5:
 					return MC.SUBSYSTEM;
 				default:
