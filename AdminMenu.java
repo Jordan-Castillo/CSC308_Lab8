@@ -13,14 +13,21 @@ public class AdminMenu extends Menu{
 		displayStatus();
 	}
 	
+	public void displayMenuNoClear() {
+		printOptionsNoClear();
+		displayStatus();
+	}
+	
 	public int inputSwitch() {
 		while(true) {
 			switch(getMenuSelection()) {
 				case 0:
 					displayTable("rooms");
+					displayMenuNoClear();
 					break;
 				case 1:
 					displayTable("reservations");
+					displayMenuNoClear();
 					break;
 				case 5:
 					return MC.SUBSYSTEM;

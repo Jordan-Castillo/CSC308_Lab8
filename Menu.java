@@ -29,6 +29,15 @@ public class Menu {
 			i++;
 		}
 	}
+
+	public void printOptionsNoClear() {
+		int i = 0;
+		
+		for (String opt : options){
+			System.out.println(i + ": " + opt);
+			i++;
+		}
+	}
 	
 	public void displayMenu() {
 		//to be overwritten by subclasses
