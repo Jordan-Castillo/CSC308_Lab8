@@ -36,6 +36,7 @@ public class AdminMenu extends Menu{
 				case 4:
 					dropTables();
 					displayMenuNoClear();
+					break;
 				case 5:
 					return MC.SUBSYSTEM;
 				default:
