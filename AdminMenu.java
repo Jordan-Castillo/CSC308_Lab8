@@ -150,40 +150,7 @@ public class AdminMenu extends Menu{
 		}
 		System.out.println("Database Status: " + status + "\n" +
 							"Reservations: " + rvsCount + "\n" + "Rooms: " + rmsCount);
-		
-		/*
-		try{
-			DatabaseMetaData meta = conn.getMetaData();
-			ResultSet res = meta.getTables(null, null, "rooms", null);
-			if(res.next())//determine if rooms table exists
-			{	rms = true;
-				stmt = conn.createStatement();
-				res = stmt.executeQuery("Select COUNT(*) FROM rooms;");
-				if(res.next())
-					rmsCount = res.getInt(1);
-				stmt.close();
-			}
-			res = meta.getTables(null, null, "reservations", null);
-			if(res.next())//determine if reservations table exists
-			{	rvs =  true;
-				status = "empty";
-				stmt = conn.createStatement();
-				res = stmt.executeQuery("Select COUNT(*) FROM reservations;");
-				if(res.next())
-					rvsCount = res.getInt(1);
-				stmt.close();
-			}
-			if(rmsCount > 0 && rvsCount > 0)
-				status = "full";
-			res.close();
-			System.out.println("Database Status: " + status + "\n" +
-							"Reservations: " + rvsCount + "\n" + "Rooms: " + rmsCount);
-		}//END TRY BLOCK
-		catch(Exception ex){
-			System.out.println("Failure during dbStatus() call.");
-			System.exit(-1);
-		}
-		*/
+
 	}
 
 }
