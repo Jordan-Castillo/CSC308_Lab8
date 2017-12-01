@@ -45,6 +45,7 @@ public class AdminMenu extends Menu{
 
 	public void clearTables()
 	{
+		clearScreen();
 		try{
 		Statement stmt = conn.createStatement();
 		stmt.executeUpdate("DELETE FROM reservations;");
@@ -81,12 +82,49 @@ public class AdminMenu extends Menu{
 			ex.printStackTrace();
 		}
 	}
+	/*
+		Returns -1 if table does not exists
+		Returns n if table exists and n is the tuple count
+		0 <= n 
+	*/
+	public int tupleCount(String tableName){
+		Statement stmt;
+		int returnInt = 0;
+		try{
+			DatabaseMetaData meta = conn.getMetaData();
+			ResultSet res = meta.getTables(null, null, tableName, null);
+			if(res.next()){
+				stmt = conn.createStatement();
+				res = stmt.executeQuery("SELECT COUNT(*) FROM " + tableName + ";");
+				if(res.next())
+					returnInt = res.getInt(1);
+			}
+			stmt.close();
+			res.close();
+			return returnInt;
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+			System.exit(-1);
+		}
+	}
 	
 	public void displayStatus(){
 		boolean rms = false, rvs = false;
 		int rmsCount = 0, rvsCount = 0;
 		String status = "no database";
 		Statement stmt;
+		
+		rmsCount = tupleCount("rooms");
+		rvsCount = tupleCount("reservations");
+		if(rmsCount == 0 && rvsCount == 0)
+			status = "empty";
+		else if(rmsCount > 0 && rvsCount > 0)
+			status = "full";
+		System.out.println("Database Status: " + status + "\n" +
+							"Reservations: " + rvsCount + "\n" + "Rooms: " + rmsCount);
+		
+		/*
 		try{
 			DatabaseMetaData meta = conn.getMetaData();
 			ResultSet res = meta.getTables(null, null, "rooms", null);
@@ -118,6 +156,7 @@ public class AdminMenu extends Menu{
 			System.out.println("Failure during dbStatus() call.");
 			System.exit(-1);
 		}
+		*/
 	}
 
 }
