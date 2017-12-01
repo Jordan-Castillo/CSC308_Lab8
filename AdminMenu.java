@@ -44,7 +44,7 @@ public class AdminMenu extends Menu{
 
 	public void clearTables()
 	{
-		try(){
+		try{
 		Statement stmt = conn.createStatement();
 		stmt.executeUpdate("DELETE FROM reservations;");
 		stmt.executeUpdate("DELETE FROM rooms;");
