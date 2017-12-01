@@ -74,7 +74,7 @@ public class AdminMenu extends Menu{
 	public void displayTable(String tableName)
 	{
 		clearScreen();
-		if(tupleCount() < 0)
+		if(tupleCount(tableName) < 0)
 		{
 			System.out.println("Table " + tableName + " does not exist.");
 			return;
