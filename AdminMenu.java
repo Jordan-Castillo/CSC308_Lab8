@@ -143,6 +143,11 @@ public class AdminMenu extends Menu{
 			status = "empty";
 		else if(rmsCount > 0 && rvsCount > 0)
 			status = "full";
+		else
+		{
+			rvsCount = 0;
+			rmsCount = 0;
+		}
 		System.out.println("Database Status: " + status + "\n" +
 							"Reservations: " + rvsCount + "\n" + "Rooms: " + rmsCount);
 		
