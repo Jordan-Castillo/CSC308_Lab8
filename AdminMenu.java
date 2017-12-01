@@ -33,6 +33,9 @@ public class AdminMenu extends Menu{
 					clearTables();
 					displayMenuNoClear();
 					break;
+				case 4:
+					dropTables();
+					displayMenuNoClear();
 				case 5:
 					return MC.SUBSYSTEM;
 				default:
@@ -41,7 +44,18 @@ public class AdminMenu extends Menu{
 		}
 	}
 
-
+	public void dropTables(){
+		clearScreen();
+		try{
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate("DROP TABLE reservations;");
+			stmt.executeUpdate("DROP TABLE rooms;");
+			stmt.close();
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
 
 	public void clearTables()
 	{
@@ -50,6 +64,7 @@ public class AdminMenu extends Menu{
 		Statement stmt = conn.createStatement();
 		stmt.executeUpdate("DELETE FROM reservations;");
 		stmt.executeUpdate("DELETE FROM rooms;");
+		stmt.close();
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
