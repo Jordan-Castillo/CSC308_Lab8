@@ -35,9 +35,17 @@ public class AdminMenu extends Menu{
 		try{
 			Statement stmt = conn.createStatement();
 			ResultSet res = stmt.executeQuery("SELECT * FROM " + tableName + ";");
+			ResultSetMetaData rsmd = res.getMetaData();
+			int numColumns = rsmd.getColumnCount();
+			for(i = 1; i <= numColumns; i++)
+				if(i < numColumns)
+					System.out.print(rsmd.getColumnName(i) + ", ");
+				else
+					System.out.print(rsmd.getColumnName(i) + "\n");
 			while(res.next())
 			{
-				System.out.println(res.getString(1));
+				for(int i = 1; i <= numColumns; i++)
+					System.out.println(res.getString(i));
 			}
 		}
 		catch(Exception ex){
