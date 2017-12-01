@@ -45,7 +45,10 @@ public class AdminMenu extends Menu{
 			while(res.next())
 			{
 				for(int i = 1; i <= numColumns; i++)
-					System.out.println(res.getString(i));
+					if(i < numColumns)
+						System.out.print(res.getString(i) + ", ");
+					else
+						System.out.print(res.getString(i) + "\n");
 			}
 		}
 		catch(Exception ex){
