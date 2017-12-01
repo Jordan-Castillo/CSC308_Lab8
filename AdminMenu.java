@@ -110,7 +110,7 @@ public class AdminMenu extends Menu{
 	*/
 	public int tupleCount(String tableName){
 		Statement stmt;
-		int returnInt = 0;
+		int returnInt = -1;
 		try{
 			DatabaseMetaData meta = conn.getMetaData();
 			ResultSet res = meta.getTables(null, null, tableName, null);
