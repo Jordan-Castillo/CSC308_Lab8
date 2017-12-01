@@ -37,7 +37,7 @@ public class AdminMenu extends Menu{
 			ResultSet res = stmt.executeQuery("SELECT * FROM " + tableName + ";");
 			ResultSetMetaData rsmd = res.getMetaData();
 			int numColumns = rsmd.getColumnCount();
-			for(i = 1; i <= numColumns; i++)
+			for(int i = 1; i <= numColumns; i++)
 				if(i < numColumns)
 					System.out.print(rsmd.getColumnName(i) + ", ");
 				else
