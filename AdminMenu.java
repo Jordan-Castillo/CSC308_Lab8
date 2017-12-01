@@ -98,8 +98,8 @@ public class AdminMenu extends Menu{
 				res = stmt.executeQuery("SELECT COUNT(*) FROM " + tableName + ";");
 				if(res.next())
 					returnInt = res.getInt(1);
+				stmt.close();
 			}
-			stmt.close();
 			res.close();
 			return returnInt;
 		}
@@ -107,6 +107,7 @@ public class AdminMenu extends Menu{
 			ex.printStackTrace();
 			System.exit(-1);
 		}
+		return returnInt;
 	}
 	
 	public void displayStatus(){
