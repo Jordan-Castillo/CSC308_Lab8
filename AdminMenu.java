@@ -74,6 +74,11 @@ public class AdminMenu extends Menu{
 	public void displayTable(String tableName)
 	{
 		clearScreen();
+		if(tupleCount() < 0)
+		{
+			System.out.println("Table " + tableName + " does not exist.");
+			return;
+		}
 		try{
 			Statement stmt = conn.createStatement();
 			ResultSet res = stmt.executeQuery("SELECT * FROM " + tableName + ";");
