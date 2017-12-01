@@ -22,15 +22,16 @@ public class AdminMenu extends Menu{
 		while(true) {
 			switch(getMenuSelection()) {
 				case 0:
-					clearScreen();
 					displayTable("rooms");
 					displayMenuNoClear();
 					break;
 				case 1:
-					clearScreen();
 					displayTable("reservations");
 					displayMenuNoClear();
 					break;
+				case 2:
+					clearTables();
+					displayMenuNoClear();
 				case 5:
 					return MC.SUBSYSTEM;
 				default:
@@ -38,9 +39,24 @@ public class AdminMenu extends Menu{
 			}
 		}
 	}
+
+
+
+	public void clearTables()
+	{
+		try(){
+		Statement stmt = conn.createStatement();
+		stmt.executeUpdate("DELETE FROM reservations;");
+		stmt.executeUpdate("DELETE FROM rooms;");
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
 	
 	public void displayTable(String tableName)
 	{
+		clearScreen();
 		try{
 			Statement stmt = conn.createStatement();
 			ResultSet res = stmt.executeQuery("SELECT * FROM " + tableName + ";");
