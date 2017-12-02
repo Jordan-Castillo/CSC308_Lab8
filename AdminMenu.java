@@ -217,7 +217,7 @@ public class AdminMenu extends Menu{
 		}
 	}
 	//creates the reservations table in the database
-		public static void createReservations(Connection conn){
+		public void createReservations(){
 		String reservations = MC.createReservations;
 		try{
 			Statement statement = conn.createStatement();
@@ -231,7 +231,7 @@ public class AdminMenu extends Menu{
 
 	//Creates the rooms table in the database
 
-	public static void createRooms(Connection conn){
+	public void createRooms(){
 		String rooms = MC.createRooms;
 		try{
 			Statement statement = conn.createStatement();
