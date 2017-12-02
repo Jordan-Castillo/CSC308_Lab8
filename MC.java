@@ -23,6 +23,6 @@ public class MC {
 			"JOIN rooms rm" + 
 			"ON rv.roomID = rm.roomID" + 
 			"WHERE '2010-";
-	static final String overviewSingleBack = "' BETWEEN rv.checkInDate AND rv.checkOutDate";
+	static final String overviewSingleBack = "' BETWEEN rv.checkInDate AND rv.checkOutDate;";
 	
 }
