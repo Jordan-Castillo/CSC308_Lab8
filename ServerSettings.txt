@@ -1,0 +1,3 @@
+jdbc:mysql://cslvm74.csc.calpoly.edu/jtcastil
+jtcastil
+6917656
