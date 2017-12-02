@@ -27,6 +27,12 @@ public class MenuRunner {
 				case MC.ADMIN:
 					current = new AdminMenu(conn);
 					break;
+				case MC.GUEST:
+					current = new GuestMenu(conn);
+					break;
+				case MC.OWNER:
+					current = new OwnerMenu(conn);
+					break;
 				default:
 					System.out.println("MENU NOT RECOGNIZED");//placeholder
 			}
