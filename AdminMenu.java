@@ -90,7 +90,7 @@ public class AdminMenu extends Menu{
 			System.out.println("The database is already full");
 			return;
 		}
-		
+		System.out.println("Loading Tables...");
 		try{
 			FileReader fileReader = new FileReader(filenameRm);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -103,6 +103,7 @@ public class AdminMenu extends Menu{
 				stmt.executeUpdate(currentUpdate);
 			stmt.close();
 			bufferedReader.close();	
+			clearScreen();
 			System.out.println("Tables successfully loaded.");
 		}//end try block
 		catch(Exception ex){
