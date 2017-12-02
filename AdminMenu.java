@@ -75,6 +75,7 @@ public class AdminMenu extends Menu{
 		String filenameRm = "Inn-build-Rooms.sql";
 		String filenameRv = "Inn-build-Reservations.sql";
 		String currentUpdate;
+		int checker;
 		Statement stmt;
 		clearScreen();
 		if((checker = tupleCount("rooms")) < 0)
