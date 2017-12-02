@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.*;
 
 public class OwnerMenu extends Menu{
 
@@ -21,6 +22,7 @@ public class OwnerMenu extends Menu{
 			switch(getMenuSelection()) {
 				case 0:
 					occupancyOverview();
+					break;
 				case 4:
 					return MC.SUBSYSTEM;
 				default:
@@ -58,7 +60,20 @@ public class OwnerMenu extends Menu{
 	}
 	
 	public void createArray(ResultSet res){
-		
+		try{
+			ResultSetMetaData rsmd = res.getMetaData();
+			int numColumns = rsmd.getColumnCount();
+			List<Tuple> table = new ArrayList<Tuple>();
+			for(int i = 0; i < numColumns; i++)
+			{
+				table.add(new Tuple(res));
+				res.next();
+			}
+				System.out.println("Tuples made!");
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
 	}
 	
 	
