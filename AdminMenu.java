@@ -117,10 +117,15 @@ public class AdminMenu extends Menu{
 	public void displayTable(String tableName)
 	{
 		clearScreen();
-		if(tupleCount(tableName) < 0)
+		int checker;
+		if((checker = tupleCount(tableName)) < 0)
 		{
 			System.out.println("Table " + tableName + " does not exist.");
 			return;
+		}
+		else if(checker == 0)
+		{
+			System.out.println("There are no records in table " + tableName + ".");
 		}
 		try{
 			Statement stmt = conn.createStatement();
