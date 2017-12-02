@@ -69,7 +69,8 @@ public class OwnerMenu extends Menu{
 			for(int i = 0; i < numColumns; i++)
 			{
 				table.add(new Tuple(res));
-				res.next();
+				if(i < (numColumns - 1))
+					res.next();
 			}
 				System.out.println("Tuples made!");
 		}
