@@ -69,8 +69,7 @@ public class AdminMenu extends Menu{
 		clearScreen();
 		if(tupleCount("rooms") < 0)
 		{
-			System.out.println("Table 'rooms' does not exist.");
-			System.out.println("Table 'reservation' does not exist.");
+			"There are no tables available to drop."
 			return;
 		}
 		try{
@@ -90,6 +89,17 @@ public class AdminMenu extends Menu{
 	public void clearTables()
 	{
 		clearScreen();
+		int checker;
+		if((checker = tupleCount("rooms")) < 0)
+		{
+			System.out.println("There is no database to clear.");
+			return;
+		}
+		else if (checker == 0)
+		{
+			System.out.println("There are no records to clear.");
+		}
+		
 		try{
 		Statement stmt = conn.createStatement();
 		stmt.executeUpdate("DELETE FROM reservations;");
