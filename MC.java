@@ -17,5 +17,12 @@ public class MC {
 			"firstName VARCHAR(20), numAdults TINYINT, numKids TINYINT," +
 			"PRIMARY KEY(reservationCode)," +
 			"FOREIGN KEY(roomID) REFERENCES rooms(roomID));";
+			
+	static final String overviewSingleFront = "SELECT *" +
+			"FROM reservations rv" + 
+			"JOIN rooms rm" + 
+			"ON rv.roomID = rm.roomID" + 
+			"WHERE '2010-";
+	static final String overviewSingleBack = "' BETWEEN rv.checkInDate AND rv.checkOutDate";
 	
 }

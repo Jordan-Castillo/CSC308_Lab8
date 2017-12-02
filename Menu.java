@@ -7,7 +7,8 @@ import java.sql.*;
 public class Menu {
 	
 	private ArrayList<String> options;
-	private static Scanner reader = new Scanner(System.in);
+	//made public so can be used freely by subclasses
+	public static Scanner reader = new Scanner(System.in);
 	public Connection conn;
 	
 	public Menu(String[] opts, Connection conn) {
