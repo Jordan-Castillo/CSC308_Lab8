@@ -63,7 +63,7 @@ public class OwnerMenu extends Menu{
 	public void createArray(ResultSet res){
 		try{
 			List<Tuple> table = new ArrayList<Tuple>();
-			while(res.next())
+			while(res.next()){
 				table.add(new Tuple(res));;
 			}
 				System.out.println("Tuples made!");
