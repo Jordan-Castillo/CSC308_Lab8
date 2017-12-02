@@ -19,8 +19,8 @@ public class OwnerMenu extends Menu{
 	public int inputSwitch() {
 		while(true) {
 			switch(getMenuSelection()) {
-				//case 1:
-				//	
+				case 0:
+					occupancyOverview();
 				case 4:
 					return MC.SUBSYSTEM;
 				default:
