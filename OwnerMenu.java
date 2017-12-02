@@ -53,6 +53,7 @@ public class OwnerMenu extends Menu{
 		try{
 			stmt = conn.createStatement();
 			res = stmt.executeQuery(MC.overviewSingleFront + month + "-" + day + MC.overviewSingleBack);
+			createArray(res);
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
