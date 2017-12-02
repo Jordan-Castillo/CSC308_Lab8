@@ -73,8 +73,8 @@ public class AdminMenu extends Menu{
 			-
 	*/
 	public void loadTables(){
-		String filenameRm = "Inn-build-Rooms.sql";
-		String filenameRv = "Inn-build-Reservations.sql";
+		String filenameRm = "INN-build-Rooms.sql";
+		String filenameRv = "INN-build-Reservations.sql";
 		String currentUpdate;
 		int checker;
 		Statement stmt;
