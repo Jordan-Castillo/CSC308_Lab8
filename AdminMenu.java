@@ -6,18 +6,34 @@ public class AdminMenu extends Menu{
 		super(new String[] {"View Rooms", "View Reservations", "Clear All Records",
 			"Load Database", "Remove Database", "Switch Subsystem"}, conn);
 	}
-	
+
 	public void displayMenu() {
 		//current status display
 		printOptions();
 		displayStatus();
 	}
 	
+	/*
+		Identical to displayMenu() except it does not clear the screen.
+		Used following a query, so that we can display the query, and still show
+			the usable options directly below. 
+	*/
 	public void displayMenuNoClear() {
 		printOptionsNoClear();
 		displayStatus();
 	}
-	
+	/*
+		Switch based of user submitted digit. Options listed below.
+		0 - Displays Tuples of "rooms" table	
+				First prints column names
+				Next prints all tuples of that table
+		1 - Displays Tuples of "rooms table", same functionality as 0
+		2 - Clear all tuples from the "rooms" and "reservations" tables.
+		3 - 
+		4 - Drop the "rooms" and "reservations" tables from the selected database
+		5 - Return to the SubsystemMenu
+			
+	*/
 	public int inputSwitch() {
 		while(true) {
 			switch(getMenuSelection()) {
@@ -44,7 +60,11 @@ public class AdminMenu extends Menu{
 			}
 		}
 	}
-
+	/*
+		dropTables()
+			-First clears the screen
+			-Second tries to drop both "reservation" and "rooms"
+	*/
 	public void dropTables(){
 		clearScreen();
 		try{
@@ -57,7 +77,10 @@ public class AdminMenu extends Menu{
 			ex.printStackTrace();
 		}
 	}
-
+	/*
+	
+	
+	*/
 	public void clearTables()
 	{
 		clearScreen();
@@ -71,7 +94,10 @@ public class AdminMenu extends Menu{
 			ex.printStackTrace();
 		}
 	}
+	/*
 	
+	
+	*/
 	public void displayTable(String tableName)
 	{
 		clearScreen();
@@ -130,7 +156,10 @@ public class AdminMenu extends Menu{
 		}
 		return returnInt;
 	}
+	/*
 	
+	
+	*/
 	public void displayStatus(){
 		boolean rms = false, rvs = false;
 		int rmsCount = 0, rvsCount = 0;
