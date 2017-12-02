@@ -49,6 +49,8 @@ public class AdminMenu extends Menu{
 					clearTables();
 					displayMenuNoClear();
 					break;
+				//case 3:
+				//	loadTables();	
 				case 4:
 					dropTables();
 					displayMenuNoClear();
@@ -60,10 +62,54 @@ public class AdminMenu extends Menu{
 			}
 		}
 	}
+	
+	
+	/*
+		loadTables()
+			-
+			-
+	*/
+	public void loadTables(){
+		String filenameRm = "Inn-build-Rooms.sql";
+		String filenameRv = "Inn-build-Reservations.sql";
+		String currentUpdate;
+		Statement stmt;
+		clearScreen();
+		if((checker = tupleCount("rooms")) < 0)
+		{
+			System.out.println("There is no database to accept records.");
+			return;
+		}
+		else if (checker > 0)
+		{
+			System.out.println("The database is already full");
+			return;
+		}
+		
+		try{
+			FileReader fileReader = new FileReader(filenameRm);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			stmt = conn.createStatement();
+			while((currentUpdate = bufferedReader.readLine()) != null)
+				stmt.executeUpdate(currentUpdate);
+			fileReader = new FileReader(filenameRv);
+			bufferedReader = new BufferedReader(fileReader);
+			while((currentUpdate = bufferedReader.readLine()) != null)
+				stmt.executeUpdate(currentUpdate);
+			stmt.close();
+			bufferedReader.close();	
+			System.out.println("Tables successfully loaded.");
+		}//end try block
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	
 	/*
 		dropTables()
-			-First clears the screen
-			-Second tries to drop both "reservation" and "rooms"
+			-First, check if tables exist, else return
+			-Second clears the screen
+			-Third tries to drop both "reservation" and "rooms"
 	*/
 	public void dropTables(){
 		clearScreen();
@@ -83,7 +129,14 @@ public class AdminMenu extends Menu{
 		}
 	}
 	/*
-	
+		clearTables()
+			-First, check if both tables exist, else return
+			-Second, check if tables have any tuples, else return
+			-Third, delete all tuples from both tables
+			
+			note: the admin class does not have the ability to delete
+				only one of the tables, or clear only one table, so I currently
+				only need to check ONE of the tables.
 	
 	*/
 	public void clearTables()
@@ -98,6 +151,7 @@ public class AdminMenu extends Menu{
 		else if (checker == 0)
 		{
 			System.out.println("There are no records to clear.");
+			return;
 		}
 		
 		try{
@@ -110,9 +164,13 @@ public class AdminMenu extends Menu{
 			ex.printStackTrace();
 		}
 	}
+	
 	/*
-	
-	
+		displayTable()
+			-First, check if table exists, else return
+			-Second, check if table has tuples, else return
+			-Third, print column names of desired table
+			-Fourth, print all tuples from the desired table
 	*/
 	public void displayTable(String tableName)
 	{
@@ -126,6 +184,7 @@ public class AdminMenu extends Menu{
 		else if(checker == 0)
 		{
 			System.out.println("There are no records in table " + tableName + ".");
+			return;
 		}
 		try{
 			Statement stmt = conn.createStatement();
@@ -151,9 +210,10 @@ public class AdminMenu extends Menu{
 		}
 	}
 	/*
-		Returns -1 if table does not exists
-		Returns n if table exists and n is the tuple count
-		0 <= n 
+		tupleCount()
+			Returns -1 if table does not exists
+			Returns n if table exists and n is the tuple count
+			0 <= n 
 	*/
 	public int tupleCount(String tableName){
 		Statement stmt;
@@ -178,7 +238,9 @@ public class AdminMenu extends Menu{
 		return returnInt;
 	}
 	/*
-	
+		displayStatus()
+			-Statically displays the status, and count of all tables, directly below menu options
+			
 	
 	*/
 	public void displayStatus(){
