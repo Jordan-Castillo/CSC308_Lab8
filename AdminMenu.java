@@ -82,8 +82,9 @@ public class AdminMenu extends Menu{
 		clearScreen();
 		if((checker = tupleCount("rooms")) < 0)
 		{
-			System.out.println("There is no database to accept records.");
-			return;
+			System.out.println("Creating Tables...");
+			createRooms();
+			createReservations();
 		}
 		else if (checker > 0)
 		{
@@ -215,6 +216,34 @@ public class AdminMenu extends Menu{
 			ex.printStackTrace();
 		}
 	}
+	//creates the reservations table in the database
+		public static void createReservations(Connection conn){
+		String reservations = MC.createReservations;
+		try{
+			Statement statement = conn.createStatement();
+			statement.executeUpdate(reservations);
+			statement.close();
+		}
+		catch(Exception ex){
+			System.out.println("Create reservations table failed.");
+		}
+	}
+
+	//Creates the rooms table in the database
+
+	public static void createRooms(Connection conn){
+		String rooms = MC.createRooms;
+		try{
+			Statement statement = conn.createStatement();
+			statement.executeUpdate(rooms);
+			statement.close();
+		}
+		catch(Exception ex){
+			System.out.println("Create rooms table failed.");
+		}
+	}
+	
+	
 	/*
 		tupleCount()
 			Returns -1 if table does not exists
