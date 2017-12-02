@@ -62,15 +62,9 @@ public class OwnerMenu extends Menu{
 	
 	public void createArray(ResultSet res){
 		try{
-			ResultSetMetaData rsmd = res.getMetaData();
-			int numColumns = rsmd.getColumnCount();
 			List<Tuple> table = new ArrayList<Tuple>();
-			
-			for(int i = 0; i < numColumns; i++)
-			{
-				table.add(new Tuple(res));
-				if(i < (numColumns - 1))
-					res.next();
+			while(res.next())
+				table.add(new Tuple(res));;
 			}
 				System.out.println("Tuples made!");
 		}
