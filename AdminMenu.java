@@ -67,6 +67,12 @@ public class AdminMenu extends Menu{
 	*/
 	public void dropTables(){
 		clearScreen();
+		if(tupleCount("rooms") < 0)
+		{
+			System.out.println("Table 'rooms' does not exist.");
+			System.out.println("Table 'reservation' does not exist.");
+			return;
+		}
 		try{
 			Statement stmt = conn.createStatement();
 			stmt.executeUpdate("DROP TABLE reservations;");
