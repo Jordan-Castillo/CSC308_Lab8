@@ -53,6 +53,7 @@ public class AdminMenu extends Menu{
 					break;
 				case 3:
 					loadTables();	
+					break;
 				case 4:
 					dropTables();
 					displayMenuNoClear();
