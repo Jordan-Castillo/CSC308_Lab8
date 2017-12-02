@@ -69,7 +69,7 @@ public class AdminMenu extends Menu{
 		clearScreen();
 		if(tupleCount("rooms") < 0)
 		{
-			"There are no tables available to drop."
+			System.out.println("There are no tables available to drop.");
 			return;
 		}
 		try{
