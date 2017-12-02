@@ -51,8 +51,8 @@ public class AdminMenu extends Menu{
 					clearTables();
 					displayMenuNoClear();
 					break;
-				//case 3:
-				//	loadTables();	
+				case 3:
+					loadTables();	
 				case 4:
 					dropTables();
 					displayMenuNoClear();
