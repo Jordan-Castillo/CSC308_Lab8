@@ -65,7 +65,7 @@ public class OwnerMenu extends Menu{
 			ResultSetMetaData rsmd = res.getMetaData();
 			int numColumns = rsmd.getColumnCount();
 			List<Tuple> table = new ArrayList<Tuple>();
-			//res.next();
+			
 			for(int i = 0; i < numColumns; i++)
 			{
 				table.add(new Tuple(res));
