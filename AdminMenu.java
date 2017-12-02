@@ -279,13 +279,13 @@ public class AdminMenu extends Menu{
 	
 	*/
 	public void displayStatus(){
-		boolean rms = false, rvs = false;
 		int rmsCount = 0, rvsCount = 0;
 		String status = "no database";
 		Statement stmt;
 		
 		rmsCount = tupleCount("rooms");
 		rvsCount = tupleCount("reservations");
+		System.out.println("rms = " + rmsCount + "	rvs = " + rvsCount);
 		if(rmsCount == 0 && rvsCount == 0)
 			status = "empty";
 		else if(rmsCount > 0 && rvsCount > 0)
