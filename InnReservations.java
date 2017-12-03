@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 import java.sql.*;
 
-public class MenuRunner {
+public class InnReservations {
 
 	public static void main(String[] args) {
 		Connection conn = null;
