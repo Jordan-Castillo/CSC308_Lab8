@@ -84,12 +84,14 @@ public class OwnerMenu extends Menu{
 		System.out.println("Enter Reservation Code to see more information about a specific reservation.");
 		input = reader.nextInt();
 		System.out.println(input);
-		reader.nextInt();
+		
 		for(int i = 0; i < table.size(); i++)
 		{
+			System.out.println("ResCode from DB: '" + table.get(i).reservationCode + "'");
 			if(table.get(i).reservationCode == input)
 				printTupleData(table.get(i));
 		}
+		System.exit(0);
 	}
 	
 	public void occupancyOverview(){
