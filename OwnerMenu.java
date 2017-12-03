@@ -28,6 +28,7 @@ public class OwnerMenu extends Menu{
 					reviewRooms();
 					displayMenu();
 					break;
+				
 				case 4:
 					return MC.SUBSYSTEM;
 				default:
@@ -72,16 +73,11 @@ public class OwnerMenu extends Menu{
 			ResultSet res = stmt.executeQuery(MC.reviewRoomsDateRoom + "'" +roomCode + "'" + MC.dateRoomEnd + 
 												startDate.year + "-" + startDate.month + "-" + startDate.day + "' AND '" +
 												endDate.year + "-" + endDate.month + "-" + endDate.day + "';");
-			reader.nextLine();
-			reader.nextLine();
 			table = createArray(res);
 			printReviewRoomsDate(table);
 		}
-		catch(Exception ex){
-			
+		catch(Exception ex){	
 			ex.printStackTrace();
-			reader.nextLine();
-			reader.nextLine();
 		}
 	}
 	

@@ -1,3 +1,5 @@
+import java.time.*;
+import java.sql.*;
 
 public class MC {
 	static final int QUIT = 0;
@@ -35,5 +37,61 @@ public class MC {
 				"ON rv.roomID = rm.roomID " +
 				"WHERE rm.roomID = ";
 	static final String dateRoomEnd = " AND rv.checkInDate BETWEEN '";
+	//Stuff I added
+	static final String guestRoomInfo =
+			"SELECT RoomCode, RoomName, Beds, bedType, maxOcc, basePrice, decor, nights.nights, (nights.nights / 365)" + 
+			"FROM rooms, reservations," + 
+			"	(SELECT SUM( IF((YEAR(res1.CheckIn) < 2010 AND YEAR(res1.Checkout) = 2010)," + 
+			"			DATEDIFF(res1.Checkout, '2010-01-01')," + 
+			"		IF((YEAR(res1.CheckIn) = 2010 AND YEAR(res1.Checkout) = 2010)," + 
+			"			DATEDIFF(res1.Checkout, res1.CheckIn)," + 
+			"		IF((YEAR(res1.CheckIn) = 2010 AND YEAR(res1.Checkout) > 2010)," + 
+			"			DATEDIFF('2010-12-31', res1.CheckIn)," + 
+			"            365)))) as nights," + 
+			"		r1.RoomCode as roc" + 
+			"	FROM rooms as r1, reservations as res1" + 
+			"    WHERE r1.RoomCode = res1.Room AND" + 
+			"		YEAR(res1.CheckIn) <= 2010 AND" + 
+			"		YEAR(res1.Checkout) >= 2010" + 
+			"	GROUP BY r1.RoomCode" + 
+			"    ) as nights" +
+			"WHERE rooms.RoomCode = reservations.Room AND" + 
+			"	rooms.RoomCode = nights.roc AND" + 
+			"	YEAR(CheckIn) <= 2010 AND" + 
+			"    YEAR(Checkout) >= 2010" + 
+			"GROUP BY RoomCode;";
+	
+	static String openRoomsDate(MyDate checkIn, MyDate checkOut) {
+		return "SELECT rooms.RoomName" + 
+				"FROM rooms, reservations" + 
+				"WHERE rooms.RoomCode = reservations.Room AND" + 
+				"	reservations.Checkout < " + checkIn.toSQLString() + 
+				"    reservations.CheckIn > " + checkOut.toSQLString() + 
+				"GROUP BY rooms.RoomCode;\r\n" + 
+				"HAVING COUNT(*) = 1;";
+	}
+	
+	static void displayTable(ResultSet res) { //couldn't test without DB connection
+		try {
+			ResultSetMetaData rsmd = res.getMetaData();
+			int numColumns = rsmd.getColumnCount();
+			for(int i = 1; i <= numColumns; i++)
+				if(i < numColumns)
+					System.out.print(rsmd.getColumnName(i) + ", ");
+				else
+					System.out.print(rsmd.getColumnName(i) + "\n");
+			while(res.next())
+			{
+				for(int i = 1; i <= numColumns; i++)
+					if(i < numColumns)
+						System.out.print(res.getString(i) + ", ");
+					else
+						System.out.print(res.getString(i) + "\n");
+			}
+		}catch (SQLException e) {
+			System.out.print("Error SQLException");
+			System.exit(1);
+		}
+	}//close DisplayTable
 	
 }
