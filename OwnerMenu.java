@@ -39,24 +39,17 @@ public class OwnerMenu extends Menu{
 			overviewSingle();
 		else
 			;
-		
 	}
 	public void overviewSingle(){
 		clearScreen();
-		int month;
-		int day;
-		
 		userDate date = new userDate(reader);
-		
 		Statement stmt;
 		ResultSet res;
-		System.out.println("Enter the date: Month first, then day. Both as digits.");
-		month = reader.nextInt();
-		day = reader.nextInt();
 		try{
 			stmt = conn.createStatement();
-			res = stmt.executeQuery(MC.overviewSingleFront + month + "-" + day + MC.overviewSingleBack);
-			createArray(res);
+			res = stmt.executeQuery(MC.overviewSingleFront + date.year + "-" + date.month + "-" + date.day + MC.overviewSingleBack);
+			List<Tuple> table = createArray(res);
+			printOverviewSingle(table);
 			
 		}
 		catch(Exception ex){
@@ -64,17 +57,37 @@ public class OwnerMenu extends Menu{
 		}
 	}
 	
-	public void createArray(ResultSet res){
+	public void printOverviewSingle(List<Tuple> table){
+		String[] rooms = {"AOB", "CAS", "FNA", "HBB", "IBD", "IBS", "MWC", "RND", "RTE", "TAA"};
+		boolean check = false;
+		for(String room : rooms)
+		{
+			System.out.print(room + " : ");
+			for(int i = 0; i < table.size(); i++)
+			{
+				if(table.get(i).roomID == room)
+					check = true;
+			}
+			if(check)
+				System.out.print("Occupied" + "\n");
+			else
+				System.out.print("Empty" + "\n");
+		}
+	}
+	
+	public List<Tuple> createArray(ResultSet res){
 		try{
 			List<Tuple> table = new ArrayList<Tuple>();
 			while(res.next()){
 				table.add(new Tuple(res));
 			}
+			return table;
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
 			System.exit(-1);
 		}
+		return null;
 	}
 	
 	

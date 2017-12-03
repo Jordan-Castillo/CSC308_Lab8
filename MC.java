@@ -22,7 +22,7 @@ public class MC {
 			"FROM reservations rv " + 
 			"JOIN rooms rm " + 
 			"ON rv.roomID = rm.roomID " + 
-			"WHERE '2010-";
+			"WHERE '";
 	static final String overviewSingleBack = "' BETWEEN rv.checkInDate AND rv.checkOutDate;";
 	
 }
