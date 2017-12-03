@@ -64,6 +64,7 @@ public class OwnerMenu extends Menu{
 		System.out.println("Enter the end date");
 		userDate endDate = new userDate(reader);
 		System.out.println("Enter Room Code");
+		reader.nextLine();
 		String roomCode = reader.nextLine();
 		try{
 			Statement stmt = conn.createStatement();
