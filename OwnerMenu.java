@@ -65,8 +65,8 @@ public class OwnerMenu extends Menu{
 			System.out.print(room + " : ");
 			for(int i = 0; i < table.size(); i++)
 			{
-				System.out.println("'" + room + "' <---hardcoded room, roomID---> '" + table.get(i).roomID + "'");
-				if(table.get(i).roomID == room)
+				//System.out.println("'" + room + "' <---hardcoded room, roomID---> '" + table.get(i).roomID + "'");
+				if(table.get(i).roomID.equals(room))
 					check = true;
 			}
 			if(check)
