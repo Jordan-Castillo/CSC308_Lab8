@@ -22,6 +22,7 @@ public class OwnerMenu extends Menu{
 			switch(getMenuSelection()) {
 				case 0:
 					occupancyOverview();
+					displayMenu();
 					break;
 				case 4:
 					return MC.SUBSYSTEM;
