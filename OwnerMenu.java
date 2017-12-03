@@ -24,7 +24,7 @@ public class OwnerMenu extends Menu{
 					occupancyOverview();
 					displayMenu();
 					break;
-				case 1:
+				case 2:
 					reviewRooms();
 					displayMenu();
 					break;
@@ -45,17 +45,30 @@ public class OwnerMenu extends Menu{
 			if(num == 1)
 				return;
 			else if(num == 2)
+			{
+				reviewRoomsDate();
 				return;
+			}
 			else	
 				System.out.println("Only 1 and 2 are acceptable inputs.");
 		}
 	}
 	
 	public void reviewRoomsDate(){
+		List<Tuple> table;
 		System.out.println("Enter the start date");
 		userDate startDate = new userDate(reader);
 		System.out.println("Enter the end date");
 		userDate endDate = new userDate(reader);
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet res = stmt.executeQuery(MC.reviewRoomsDate + startDate.year + "-" + startDate.month + "-" + startDate.day + "' AND '" +
+												endDate.year + "-" + endDate.month + "-" + endDate.day + "';");
+			table = createArray(res);
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
 	}
 	
 	public void occupancyOverview(){

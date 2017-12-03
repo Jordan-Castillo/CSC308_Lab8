@@ -24,5 +24,10 @@ public class MC {
 			"ON rv.roomID = rm.roomID " + 
 			"WHERE '";
 	static final String overviewSingleBack = "' BETWEEN rv.checkInDate AND rv.checkOutDate;";
+	static final String reviewRoomsDate = "SELECT * " + 
+				"FROM reservations rv " + 
+				"JOIN rooms rm " + 
+				"ON rv.roomID = rm.roomID " +
+				"WHERE rv.checkInDate BETWEEN '";
 	
 }
