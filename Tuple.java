@@ -17,6 +17,7 @@ public class Tuple{
 	int maxOccupancy;	//14
 	int basePrice;	//15
 	String decorStyle;	//16
+	boolean found = false;  //for occupancyOverview
 	
 	Tuple(ResultSet res){
 		try{

@@ -50,13 +50,44 @@ public class OwnerMenu extends Menu{
 			res = stmt.executeQuery(MC.overviewSingleFront + date.year + "-" + date.month + "-" + date.day + MC.overviewSingleBack);
 			List<Tuple> table = createArray(res);
 			printOverviewSingle(table);
-			
+			specificOverviewSingle(table);
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
 		}
 	}
 	
+	public void specificOverviewSingle(List<Tuple> table){
+		System.out.println("Enter occupied roomID to see details on reservation, or 'Q' to quit.");
+		String input = reader.nextLine();
+		boolean check = false;
+		if(input.equals('Q') || input.equals('q'))
+			return;
+		for(int i = 0; i < table.size(); i++)
+			if(table.get(i).found && table.get(i).roomID.equals(input))
+			{
+				printTupleData(table.get(i));	//call function to print object data
+				return;
+			}
+		System.out.println("The selected room is Unoccupied.");
+	}
+	
+	public void printTupleData(Tuple tuple){
+		System.out.println("Reservation Code: " + tuple.reservationCode);
+		System.out.println("RoomID: " + tuple.roomID);
+		System.out.println("CheckIn Date: " + tuple.checkInDate);
+		System.out.println("CheckOut Date: " + tuple.checkOutDate);
+		System.out.println("Price Rate: " + tuple.priceRate);
+		System.out.println("Name: " + tuple.firstName + tuple.lastName);
+		System.out.println("Number of Children: " + tuple.numKids);
+		System.out.println("Number of Adults: " + tuple.numAdults);
+		System.out.println("Room Name: " + tuple.roomName);
+		System.out.println("Number of Beds: " + tuple.bedNum);
+		System.out.println("Type of Bed: " + tuple.bedType);
+		System.out.println("Maximum Occupancy: " + tuple.maxOccupancy);
+		System.out.println("Base Price: " + tuple.basePrice);
+		System.out.println("Style of Decor: " + tuple.decorStyle);
+	}
 	public void printOverviewSingle(List<Tuple> table){
 		String[] rooms = {"AOB", "CAS", "FNA", "HBB", "IBD", "IBS", "MWC", "RND", "RTE", "TAA"};
 		boolean check = false;
@@ -67,7 +98,10 @@ public class OwnerMenu extends Menu{
 			{
 				//System.out.println("'" + room + "' <---hardcoded room, roomID---> '" + table.get(i).roomID + "'");
 				if(table.get(i).roomID.equals(room))
+				{
 					check = true;
+					table.get(i).found = true;
+				}
 			}
 			if(check)
 				System.out.print("Occupied" + "\n");
