@@ -285,7 +285,6 @@ public class AdminMenu extends Menu{
 		
 		rmsCount = tupleCount("rooms");
 		rvsCount = tupleCount("reservations");
-		System.out.println("rms = " + rmsCount + "	rvs = " + rvsCount);
 		if(rmsCount == 0 && rvsCount == 0)
 			status = "empty";
 		else if(rmsCount > 0 && rvsCount > 0)

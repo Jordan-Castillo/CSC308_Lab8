@@ -45,6 +45,9 @@ public class OwnerMenu extends Menu{
 		clearScreen();
 		int month;
 		int day;
+		
+		userDate date = new userDate(reader);
+		
 		Statement stmt;
 		ResultSet res;
 		System.out.println("Enter the date: Month first, then day. Both as digits.");
@@ -54,6 +57,7 @@ public class OwnerMenu extends Menu{
 			stmt = conn.createStatement();
 			res = stmt.executeQuery(MC.overviewSingleFront + month + "-" + day + MC.overviewSingleBack);
 			createArray(res);
+			
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
@@ -64,12 +68,12 @@ public class OwnerMenu extends Menu{
 		try{
 			List<Tuple> table = new ArrayList<Tuple>();
 			while(res.next()){
-				table.add(new Tuple(res));;
+				table.add(new Tuple(res));
 			}
-				System.out.println("Tuples made!");
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
+			System.exit(-1);
 		}
 	}
 	
