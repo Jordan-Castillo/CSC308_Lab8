@@ -72,6 +72,8 @@ public class OwnerMenu extends Menu{
 				return;
 			}
 		System.out.println("The selected room is Unoccupied.");
+		System.out.println("Enter any key to return to the Owner menu.");
+		reader.nextLine();
 	}
 	
 	public void printTupleData(Tuple tuple){
