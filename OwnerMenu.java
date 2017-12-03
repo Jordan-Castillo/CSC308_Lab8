@@ -66,10 +66,12 @@ public class OwnerMenu extends Menu{
 		System.out.println("Enter Room Code");
 		reader.nextLine();
 		String roomCode = reader.nextLine();
+		
 		try{
 			Statement stmt = conn.createStatement();
 			ResultSet res = stmt.executeQuery(MC.reviewRoomsDate + startDate.year + "-" + startDate.month + "-" + startDate.day + "' AND '" +
 												endDate.year + "-" + endDate.month + "-" + endDate.day + "' AND roomID = " + roomCode + ";");
+					reader.nextLine();
 			table = createArray(res);
 			printReviewRoomsDate(table);
 		}
