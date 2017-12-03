@@ -83,6 +83,7 @@ public class OwnerMenu extends Menu{
 		}
 		System.out.println("Enter Reservation Code to see more information about a specific reservation.");
 		input = reader.nextLine();
+		input = reader.nextLine();
 		
 	}
 	
