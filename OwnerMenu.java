@@ -78,7 +78,10 @@ public class OwnerMenu extends Menu{
 			printReviewRoomsDate(table);
 		}
 		catch(Exception ex){
+			
 			ex.printStackTrace();
+			reader.nextLine();
+			reader.nextLine();
 		}
 	}
 	
