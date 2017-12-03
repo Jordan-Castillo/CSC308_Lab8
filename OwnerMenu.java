@@ -54,6 +54,26 @@ public class OwnerMenu extends Menu{
 		}
 	}
 	
+	public void reviewRoomsDateRoom(){
+		List<Tuple> table;
+		System.out.println("Enter the start date");
+		userDate startDate = new userDate(reader);
+		System.out.println("Enter the end date");
+		userDate endDate = new userDate(reader);
+		System.out.println("Enter Room Code");
+		String roomCode = reader.nextLine();
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet res = stmt.executeQuery(MC.reviewRoomsDate + startDate.year + "-" + startDate.month + "-" + startDate.day + "' AND '" +
+												endDate.year + "-" + endDate.month + "-" + endDate.day + "' AND roomID = " + roomCode + ";");
+			table = createArray(res);
+			printReviewRoomsDate(table);
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	
 	public void reviewRoomsDate(){
 		List<Tuple> table;
 		System.out.println("Enter the start date");
