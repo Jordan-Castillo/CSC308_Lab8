@@ -24,12 +24,38 @@ public class OwnerMenu extends Menu{
 					occupancyOverview();
 					displayMenu();
 					break;
+				case 1:
+					reviewRooms();
+					displayMenu();
+					break;
 				case 4:
 					return MC.SUBSYSTEM;
 				default:
 					System.out.println("Invalid Menu Selection");
 			}
 		}
+	}
+	
+	public void reviewRooms(){
+		System.out.println("1: Review rooms by Date + Room");
+		System.out.println("2: Review rooms by Date only");
+		int num = getMenuSelection();
+		while(true)
+		{
+			if(num == 1)
+				return;
+			else if(num == 2)
+				return;
+			else	
+				System.out.println("Only 1 and 2 are acceptable inputs.");
+		}
+	}
+	
+	public void reviewRoomsDate(){
+		System.out.println("Enter the start date");
+		userDate startDate = new userDate(reader);
+		System.out.println("Enter the end date");
+		userDate endDate = new userDate(reader);
 	}
 	
 	public void occupancyOverview(){
@@ -41,6 +67,12 @@ public class OwnerMenu extends Menu{
 		else
 			;
 	}
+	
+	//needs to be implemented
+	public void overviewDouble(){
+		
+	}
+	
 	public void overviewSingle(){
 		clearScreen();
 		userDate date = new userDate(reader);
