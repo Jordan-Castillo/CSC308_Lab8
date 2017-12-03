@@ -88,6 +88,8 @@ public class OwnerMenu extends Menu{
 		System.out.println("Maximum Occupancy: " + tuple.maxOccupancy);
 		System.out.println("Base Price: " + tuple.basePrice);
 		System.out.println("Style of Decor: " + tuple.decorStyle);
+		System.out.println("Enter any key to return to the Owner menu.");
+		reader.nextLine();
 	}
 	public void printOverviewSingle(List<Tuple> table){
 		String[] rooms = {"AOB", "CAS", "FNA", "HBB", "IBD", "IBS", "MWC", "RND", "RTE", "TAA"};
