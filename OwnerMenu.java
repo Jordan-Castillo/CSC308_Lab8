@@ -82,8 +82,9 @@ public class OwnerMenu extends Menu{
 			System.out.println(tuple.reservationCode + ",	" + tuple.checkInDate + ",	" + tuple.roomName);
 		}
 		System.out.println("Enter Reservation Code to see more information about a specific reservation.");
-		reader.nextInt();
 		input = reader.nextInt();
+		System.out.println(input);
+		reader.nextInt();
 		for(int i = 0; i < table.size(); i++)
 		{
 			if(table.get(i).reservationCode == input)
