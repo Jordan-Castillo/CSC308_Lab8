@@ -29,5 +29,11 @@ public class MC {
 				"JOIN rooms rm " + 
 				"ON rv.roomID = rm.roomID " +
 				"WHERE rv.checkInDate BETWEEN '";
+	static final String reviewRoomsDateRoom = "SELECT * " + 
+				"FROM reservations rv " + 
+				"JOIN rooms rm " + 
+				"ON rv.roomID = rm.roomID " +
+				"WHERE rm.roomID = ";
+	static final String dateRoomEnd = " AND rv.checkInDate BETWEEN '";
 	
 }
