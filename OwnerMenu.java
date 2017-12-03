@@ -43,7 +43,10 @@ public class OwnerMenu extends Menu{
 		while(true)
 		{
 			if(num == 1)
+			{
+				reviewRoomsDateRoom();
 				return;
+			}
 			else if(num == 2)
 			{
 				reviewRoomsDate();
