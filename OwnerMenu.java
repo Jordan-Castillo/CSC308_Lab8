@@ -91,7 +91,6 @@ public class OwnerMenu extends Menu{
 			if(table.get(i).reservationCode == input)
 				printTupleData(table.get(i));
 		}
-		System.exit(0);
 	}
 	
 	public void occupancyOverview(){
@@ -160,6 +159,7 @@ public class OwnerMenu extends Menu{
 		System.out.println("Base Price: " + tuple.basePrice);
 		System.out.println("Style of Decor: " + tuple.decorStyle);
 		System.out.println("Enter any key to return to the Owner menu.");
+		reader.nextLine();
 		reader.nextLine();
 	}
 	public void printOverviewSingle(List<Tuple> table){
