@@ -37,6 +37,7 @@ public class GuestMenu extends Menu{
 			
 		} catch (SQLException e) {
 			System.out.print("SQLException");
+			e.printStackTrace();
 			System.exit(1);
 		}
 		
@@ -58,6 +59,7 @@ public class GuestMenu extends Menu{
 			MC.displayTable(res);
 		}catch (SQLException e) {
 			System.out.print("SQLException");
+			e.printStackTrace();
 			System.exit(1);
 		}
 	}
