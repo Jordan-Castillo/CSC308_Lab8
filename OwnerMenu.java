@@ -71,7 +71,7 @@ public class OwnerMenu extends Menu{
 			Statement stmt = conn.createStatement();
 			ResultSet res = stmt.executeQuery(MC.reviewRoomsDateRoom + roomCode + MC.dateRoomEnd + 
 												startDate.year + "-" + startDate.month + "-" + startDate.day + "' AND '" +
-												endDate.year + "-" + endDate.month + "-" + endDate.day + ";");
+												endDate.year + "-" + endDate.month + "-" + endDate.day + "';");
 			reader.nextLine();
 			reader.nextLine();
 			table = createArray(res);
