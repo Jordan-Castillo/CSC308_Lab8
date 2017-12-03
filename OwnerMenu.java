@@ -87,7 +87,7 @@ public class OwnerMenu extends Menu{
 		
 		for(int i = 0; i < table.size(); i++)
 		{
-			System.out.println("ResCode from DB: '" + table.get(i).reservationCode + "'");
+			//System.out.println("ResCode from DB: '" + table.get(i).reservationCode + "'");
 			if(table.get(i).reservationCode == input)
 				printTupleData(table.get(i));
 		}
