@@ -75,16 +75,20 @@ public class OwnerMenu extends Menu{
 	public void printReviewRoomsDate(List<Tuple> table){
 		System.out.println("Reservation Code, CheckInDate, Room Name");
 		Tuple tuple;
-		String input;
+		int input;
 		for(int i = 0; i < table.size(); i++)
 		{
 			tuple = table.get(i);
-			System.out.println(tuple.reservationCode + ", " + tuple.checkInDate + ", " + tuple.roomName);
+			System.out.println(tuple.reservationCode + ",	" + tuple.checkInDate + ",	" + tuple.roomName);
 		}
 		System.out.println("Enter Reservation Code to see more information about a specific reservation.");
-		input = reader.nextLine();
-		input = reader.nextLine();
-		
+		reader.nextLine();
+		input = reader.nextInt();
+		for(int i = 0; i < table.size(); i++)
+		{
+			if(table.get(i).reservationCode == input)
+				printTupleData(table.get(i));
+		}
 	}
 	
 	public void occupancyOverview(){
