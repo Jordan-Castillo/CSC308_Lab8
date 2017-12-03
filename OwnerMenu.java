@@ -60,6 +60,7 @@ public class OwnerMenu extends Menu{
 	public void specificOverviewSingle(List<Tuple> table){
 		System.out.println("Enter occupied roomID to see details on reservation, or 'Q' to quit.");
 		String input = reader.nextLine();
+		input = reader.nextLine();
 		boolean check = false;
 		if(input.equals('Q') || input.equals('q'))
 			return;
